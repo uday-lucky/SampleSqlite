@@ -22,11 +22,11 @@ namespace SampleSqlite
            var Countdb=  dbhelper.GetAllContactsData();
             if (Countdb.Count>0)
             {
-                MainPage = new HomePage();
+                MainPage = new NavigationPage(new HomePage());
             }
             else
             {
-                MainPage = new MainPage();
+                MainPage = new  NavigationPage(new HomePage());
             }
             // Handle when your app starts
         }
@@ -37,11 +37,11 @@ namespace SampleSqlite
             var Countdb = dbhelper.GetAllContactsData();
             if (Countdb.Count > 0)
             {
-                MainPage = new MainPage();
+                MainPage = new NavigationPage(new MainPage());
             }
             else
             {
-                MainPage = new HomePage();
+                MainPage = new NavigationPage( new HomePage());
               
             }
             // Handle when your app sleeps
@@ -53,11 +53,11 @@ namespace SampleSqlite
             var Countdb = dbhelper.GetAllContactsData();
             if (Countdb.Count > 0)
             {
-                MainPage = new HomePage();
+                MainPage = new NavigationPage(new HomePage());
             }
             else
             {
-                MainPage = new MainPage();
+                MainPage = new NavigationPage(new MainPage());
 
             }
             // Handle when your app resumes

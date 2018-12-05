@@ -79,8 +79,11 @@ namespace SampleSqlite.ViewModels
         public void getData()
         {
              cd = _contactrepository.GetAllContactsData();
-            
-            
+
+            if (cd.Count==0)
+            {
+                App.Current.MainPage.DisplayAlert("Alert", "No details found", "OK");
+            }
             //cd.Add(new ContactsInfo { Name="UDay", Age="23",Gender="MAle"});
         }
         public void SubmitData()
@@ -89,7 +92,18 @@ namespace SampleSqlite.ViewModels
             ct.Name = Name;
             ct.Age = Age;
             ct.Gender = Gender;
-            _contactrepository.InsertContact(ct);
+            if (Name!=""&&Age!=""&&Gender!="")
+            {
+                _contactrepository.InsertContact(ct);
+                Name = "";
+                Age = "";
+                Gender = "";
+            }
+            else
+            {
+                App.Current.MainPage.DisplayAlert("Alert","Please fill all the details","OK");
+            }
+           
         }
 
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:VM="clr-namespace:SampleSqlite.ViewModels"
              x:Class="SampleSqlite.Views.HomePage"
-              x:DataType="VM:HomePageViewModel">
+             Title="Working With SQlitedb"
+            >
     <ContentPage.BindingContext>
         <VM:HomePageViewModel/>
     </ContentPage.BindingContext>
@@ -14,21 +15,21 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0">
-                    <Entry Text="{Binding Name}"/>
-                    <Entry Text="{Binding Age}"/>
-                    <Entry Text="{Binding Gender}"/>
-                    <Button Text="SUBMIT" Command="{Binding submitcontact}"/>
-                    <Button Text="GET DATA" Command="{Binding GetData}"/>
+                <StackLayout Grid.Row="0" Padding="6">
+                    <Entry Text="{Binding Name}" Placeholder="Enter your Name" PlaceholderColor="Green"/>
+                    <Entry Text="{Binding Age}" Placeholder="Enter your Age" PlaceholderColor="Green"/>
+                    <Entry Text="{Binding Gender}" Placeholder="Enter your gender" PlaceholderColor="Green"/>
+                    <Button Text="INSERT" Command="{Binding submitcontact}" BackgroundColor="Red" />
+                    <Button Text="GET DETAILS" Command="{Binding GetData}" BackgroundColor="DeepSkyBlue"/>
                 </StackLayout>
-                <ListView ItemsSource="{Binding cd}" Grid.Row="1" HasUnevenRows="True">
+                <ListView ItemsSource="{Binding cd}" Grid.Row="1" HasUnevenRows="True" Margin="8,0,0,0">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="VM:HomePageViewModel" >
+                        <DataTemplate>
                             <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding Name}"/>
-                                    <Label Text="{Binding Age}"/>
-                                    <Label Text="{Binding Gender}"/>
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding Name}" TextColor="Red"/>
+                                    <Label Text="{Binding Age}" TextColor="Blue"/>
+                                    <Label Text="{Binding Gender}" TextColor="Blue"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
